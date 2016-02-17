@@ -41,7 +41,11 @@ public class HelloController {
         return new Viewable(template, model);
     }
     
-    
+    /**
+     * 获取user
+     * @param id
+     * @return
+     */
     @GET
     @Path("/getUser")
     @Produces("text/plain;charset=UTF-8")
@@ -49,6 +53,10 @@ public class HelloController {
          return userService.getUser(id);
     }
     
+    /**
+     * 新增user
+     * @param name
+     */
     @GET
     @Path("/addUser")
     @Produces("text/plain;charset=UTF-8")
@@ -56,6 +64,11 @@ public class HelloController {
          userService.addUser(name);
     }
     
+    /**
+     * 修改user
+     * @param name
+     * @param id
+     */
     @GET
     @Path("/updateUser")
     @Produces("text/plain;charset=UTF-8")
