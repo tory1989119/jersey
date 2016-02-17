@@ -14,13 +14,14 @@ import javax.ws.rs.core.MediaType;
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.jersey.service.HelloService;
+import com.jersey.model.User;
+import com.jersey.service.UserService;
 
 @Path("/hello") 
 public class HelloController {
     
 	@Autowired
-	private HelloService helloService;
+	private UserService userService;
 	
     @GET
     @Path("/{param}")
@@ -42,9 +43,26 @@ public class HelloController {
     
     
     @GET
-    @Path("/userHello")
+    @Path("/getUser")
     @Produces("text/plain;charset=UTF-8")
-    public String sayHelloToUser(@QueryParam("userId") String userId) {
-         return helloService.sayHelloToUser(userId);
+    public String getUser(@QueryParam("id") String id) {
+         return userService.getUser(id);
+    }
+    
+    @GET
+    @Path("/addUser")
+    @Produces("text/plain;charset=UTF-8")
+    public void addUser(@QueryParam("name") String name) {
+         userService.addUser(name);
+    }
+    
+    @GET
+    @Path("/updateUser")
+    @Produces("text/plain;charset=UTF-8")
+    public void updateUser(@QueryParam("name") String name,@QueryParam("id") Long id) {
+    	User user = new User();
+    	user.setId(id);
+    	user.setName(name);
+         userService.updateUser(user);
     }
 }

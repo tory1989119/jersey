@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jersey.dao.UserDao">
-	<!-- 按照类型查找协议 -->
 	<select id="getUser" resultType="User" parameterType="String">
 		SELECT
 		ID id,
@@ -10,4 +9,12 @@
 		user
 		WHERE ID = #{id}
 	</select>
+	
+	<insert id="addUser" parameterType="String">
+		INSERT INTO user(NAME) VALUES (#{name})
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE user SET NAME = #{name} WHERE ID = #{id}
+	</update>
 </mapper>
