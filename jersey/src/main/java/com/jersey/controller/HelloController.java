@@ -13,13 +13,15 @@ import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.server.mvc.Viewable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.jersey.model.User;
 import com.jersey.service.UserService;
 
-@Path("/hello") 
+@Component
+@Path("/hello")
 public class HelloController {
-    
+	
 	@Autowired
 	private UserService userService;
 	
